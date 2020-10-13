@@ -10,9 +10,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("mainWindow.fxml"));
+        Parent root = loader.load();
+        //Parent root = FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
         primaryStage.setTitle("VAG Station Search");
         primaryStage.setScene(new Scene(root, 900, 700));
+        Controller controller = (Controller) loader.getController();
+        controller.setStage(primaryStage);
         primaryStage.show();
     }
 
